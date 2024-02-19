@@ -6,16 +6,15 @@ import Header from "./components/Header.vue";
 const quantity = ref(0);
 
 const state = reactive({
-  quantity: 0
-})
+  quantity: 0,
+});
 
 function handleChange(e) {
-  console.log(e.target.value);
+  quantity.value = e.target.value;
 }
 
 console.log(quantity.value);
 console.log(state.quantity);
-
 </script>
 
 <template>
@@ -30,6 +29,7 @@ console.log(state.quantity);
       className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-700"
       @input="handleChange"
     />
+    {{ quantity }}
   </div>
 </template>
 
