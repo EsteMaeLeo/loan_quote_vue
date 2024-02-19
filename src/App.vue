@@ -10,7 +10,8 @@ const state = reactive({
 });
 
 function handleChange(e) {
-  quantity.value = e.target.value;
+  quantity.value = Number(e.target.value);
+  state.quantity = Number(e.target.value);
 }
 
 console.log(quantity.value);
