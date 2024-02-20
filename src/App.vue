@@ -3,7 +3,7 @@
 import { ref, reactive } from "vue";
 import Header from "./components/Header.vue";
 
-const quantity = ref(0);
+const quantity = ref(10000);
 
 const state = reactive({
   quantity: 0,
@@ -28,8 +28,10 @@ console.log(state.quantity);
     <input
       type="range"
       className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-700"
-      min="1"
-      max="10000"
+      min="0"
+      max="20000"
+      step="100"
+      value="10000"
       @input="handleChange"
     />
     <p>$ {{ quantity }}</p>
