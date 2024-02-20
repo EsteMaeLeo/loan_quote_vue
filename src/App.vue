@@ -30,7 +30,7 @@ console.log(state.quantity);
       className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-700"
       @input="handleChange"
     />
-    {{ quantity }}
+    <p>$ {{ quantity }}</p>
   </div>
 </template>
 
