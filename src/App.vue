@@ -32,9 +32,9 @@ console.log(state.quantity);
     <input
       type="range"
       className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-700"
-      min=MIN
-      max=MAX
-      step=STEP
+      :min="MIN"
+      :max="MAX"
+      :step="STEP"
       value="10000"
       @input="handleChange"
     />
