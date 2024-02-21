@@ -5,6 +5,10 @@ import Header from "./components/Header.vue";
 
 const quantity = ref(10000);
 
+const MIN = 0;
+const MAX = 20000;
+const STEP = 100;
+
 const state = reactive({
   quantity: 0,
 });
@@ -28,9 +32,9 @@ console.log(state.quantity);
     <input
       type="range"
       className="w-full h-6 bg-gray-200 accent-lime-500 hover:accent-lime-700"
-      min="0"
-      max="20000"
-      step="100"
+      min=MIN
+      max=MAX
+      step=STEP
       value="10000"
       @input="handleChange"
     />
