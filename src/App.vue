@@ -1,6 +1,6 @@
 <script setup>
 //v-on:input="handleChange"
-import { ref, reactive } from "vue";
+import { ref, computed, reactive } from "vue";
 import Header from "./components/Header.vue";
 
 const quantity = ref(10000);
@@ -22,6 +22,15 @@ from the imput
       @input="handleChange"
 */
 
+const formatMoney = computed(() => {
+  const formatter = new Intl.NumberFormat("en-us", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  return formatter.format(quantity.value);
+});
+
 console.log(quantity.value);
 console.log(state.quantity);
 </script>
@@ -41,7 +50,9 @@ console.log(state.quantity);
       :step="STEP"
       v-model.number="quantity"
     />
-    <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">$ {{ quantity }}</p>
+    <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">
+      {{ formatMoney }}
+    </p>
   </div>
 </template>
 
