@@ -39,7 +39,7 @@ console.log(state.quantity);
       :min="MIN"
       :max="MAX"
       :step="STEP"
-      v-model="quantity"
+      v-model.number="quantity"
     />
     <p>$ {{ quantity }}</p>
   </div>
