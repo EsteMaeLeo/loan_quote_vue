@@ -41,7 +41,7 @@ console.log(state.quantity);
       :step="STEP"
       v-model.number="quantity"
     />
-    <p>$ {{ quantity }}</p>
+    <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">$ {{ quantity }}</p>
   </div>
 </template>
 
