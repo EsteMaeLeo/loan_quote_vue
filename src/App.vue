@@ -13,10 +13,14 @@ const state = reactive({
   quantity: 0,
 });
 
-function handleChange(e) {
+/*function handleChange(e) {
   quantity.value = Number(e.target.value);
   state.quantity = Number(e.target.value);
-}
+} 
+from the imput
+      value="10000"
+      @input="handleChange"
+*/
 
 console.log(quantity.value);
 console.log(state.quantity);
@@ -35,8 +39,7 @@ console.log(state.quantity);
       :min="MIN"
       :max="MAX"
       :step="STEP"
-      value="10000"
-      @input="handleChange"
+      v-model="quantity"
     />
     <p>$ {{ quantity }}</p>
   </div>
