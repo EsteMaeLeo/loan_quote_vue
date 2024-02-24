@@ -23,7 +23,7 @@ from the imput
 */
 const handleChangSub = () =>{
   const value = quantity.value - STEP;
-  if(value < 0 ){
+  if(value < MIN ){
     alert('Quantity not valid')
     return
   }
