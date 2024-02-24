@@ -21,6 +21,23 @@ from the imput
       value="10000"
       @input="handleChange"
 */
+const handleChangSub = () =>{
+  const value = quantity.value - STEP;
+  if(value < 0 ){
+    alert('Quantity not valid')
+    return
+  }
+  quantity.value = value;
+}
+
+const handleChangAdd = () =>{
+  const value = quantity.value + STEP;
+  if(value > MAX){
+    alert('Quantity not valid')
+    return
+  }
+  quantity.value = value;
+}
 
 const formatMoney = computed(() => {
   const formatter = new Intl.NumberFormat("en-us", {
@@ -41,8 +58,14 @@ console.log(state.quantity);
     <div className="flex justify-between mt-10">
       <Button
         class="h-10 w-10 flex items-center justify-center font-bold bg-lime-600 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 text-white text-2xl"
-        >-</Button
-      >
+        @click="handleChangSub"
+        >-
+      </Button>
+      <Button
+      class="h-10 w-10 flex items-center justify-center font-bold bg-lime-600 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 text-white text-2xl"
+      @click="handleChangAdd"
+      >+
+    </Button>
     </div>
     <input
       type="range"
