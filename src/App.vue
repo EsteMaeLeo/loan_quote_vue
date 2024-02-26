@@ -2,6 +2,7 @@
 //v-on:input="handleChange"
 import { ref, computed, reactive } from "vue";
 import Header from "./components/Header.vue";
+import Button from "./components/Button.vue";
 
 const quantity = ref(10000);
 
@@ -56,16 +57,14 @@ console.log(state.quantity);
   <div class="my-20 max-w-lg mx-auto bg-white shadow p-10">
     <Header />
     <div className="flex justify-between mt-10">
-      <Button
-        class="h-10 w-10 flex items-center justify-center font-bold bg-lime-600 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 text-white text-2xl"
-        @click="handleChangSub"
-        >-
-      </Button>
-      <Button
-      class="h-10 w-10 flex items-center justify-center font-bold bg-lime-600 rounded-full hover:outline-none hover:ring-2 hover:ring-offset-2 text-white text-2xl"
-      @click="handleChangAdd"
-      >+
-    </Button>
+      <Button 
+        :operator="'-'"
+        :fn="handleChangSub"
+      />
+      <Button 
+        :operator="'+'"
+        :fn="handleChangAdd"
+      />
     </div>
     <input
       type="range"
