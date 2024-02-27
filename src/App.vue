@@ -77,9 +77,17 @@ console.log(state.quantity);
     <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">
       {{ formatMoney }}
     </p>
+    
     <h2 class="text-2xl font-extrabold text-gray-600 text-center">
       Choose <span className="text-indigo-700">payment term</span>
     </h2>
+
+    <select
+    className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-600" >
+    <option value="6">6 months</option>
+    <option value="12">12 months</option>
+    <option value="24">24 months</option>
+  </select>
   </div>
 </template>
 
