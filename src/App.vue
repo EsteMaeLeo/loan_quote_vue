@@ -77,6 +77,9 @@ console.log(state.quantity);
     <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">
       {{ formatMoney }}
     </p>
+    <h2 class="text-2xl font-extrabold text-gray-600 text-center">
+      Choose <span className="text-indigo-700">payment term</span>
+    </h2>
   </div>
 </template>
 
