@@ -5,6 +5,7 @@ import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 
 const quantity = ref(10000);
+const months = ref(6)
 
 const MIN = 0;
 const MAX = 20000;
@@ -83,7 +84,11 @@ console.log(state.quantity);
     </h2>
 
     <select
-    className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-600" >
+    className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold 
+    text-gray-600" 
+      :value="months"
+      v-model.number="months"
+    >
     <option value="6">6 months</option>
     <option value="12">12 months</option>
     <option value="24">24 months</option>
