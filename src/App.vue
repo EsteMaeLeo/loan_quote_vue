@@ -93,6 +93,8 @@ console.log(state.quantity);
     <option value="12">12 months</option>
     <option value="24">24 months</option>
   </select>
+
+  <div class="my-5 space-y-3 "></div>
   </div>
 </template>
 
