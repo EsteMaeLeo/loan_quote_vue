@@ -98,6 +98,16 @@ console.log(state.quantity);
     <h2 className="text-2xl font-extrabold text-gray-600 text-center">
       Payment <span className="text-indigo-700">Summary</span>
     </h2>
+
+    <p className="text-xl text-gray-600 text-center font-bold">
+      {{months}} Months
+    </p>
+    <p className="text-xl text-gray-600 text-center font-bold">
+      Ammount
+    </p>
+    <p className="text-xl text-gray-600 text-center font-bold">
+      Month
+    </p>
   </div>
   </div>
 </template>
