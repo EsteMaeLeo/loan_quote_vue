@@ -94,7 +94,11 @@ console.log(state.quantity);
     <option value="24">24 months</option>
   </select>
 
-  <div class="my-5 space-y-3 "></div>
+  <div class="my-5 space-y-3 bg-gray-50 p-5">
+    <h2 className="text-2xl font-extrabold text-gray-600 text-center">
+      Payment <span className="text-indigo-700">Summary</span>
+    </h2>
+  </div>
   </div>
 </template>
 
