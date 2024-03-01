@@ -1,6 +1,6 @@
-const computeTotalPay = (quantity, time) => {
+const calTotalPay = (quantity, time) => {
   let total;
-console.log(quantity, time)
+
   //more quantity less interest
   if (quantity < 5000) {
     total = quantity * 1.4;
@@ -11,7 +11,7 @@ console.log(quantity, time)
   } else {
     total = quantity * 1.1;
   }
- 
+  console.log(total)
   if (time === 6) {
     total *= 1.1;
   } else if (time === 12) {
@@ -19,8 +19,8 @@ console.log(quantity, time)
   } else {
     total *= 1.3;
   }  
-  
+  console.log(total)
   return total;
 };
 
-export { computeTotalPay };
+export { calTotalPay };

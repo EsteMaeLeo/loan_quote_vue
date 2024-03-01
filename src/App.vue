@@ -3,15 +3,16 @@
 import { ref, computed, reactive } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
-import { computeTotalPay } from "./helpers/index.js";
+import { calTotalPay } from "./helpers";
 
 const quantity = ref(10000);
 const months = ref(6);
-const total = ref(computeTotalPay(quantity.value, months.value));
+const totalAmount = ref( calTotalPay(quantity.value, months.value) );
 
 const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
+
 
 const state = reactive({
   quantity: 0,
@@ -43,14 +44,22 @@ const handleChangAdd = () => {
   quantity.value = value;
 };
 
-const formatMoney = computed(() => {
+/* const formatMoney = computed(() => {
   const formatter = new Intl.NumberFormat("en-us", {
     style: "currency",
     currency: "USD",
   });
 
   return formatter.format(quantity.value);
-});
+}); */
+const formatMoney = (money) => {
+const formatter = new Intl.NumberFormat("en-us", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  return formatter.format(money);
+};
 
 console.log(quantity.value);
 console.log(state.quantity);
@@ -72,7 +81,7 @@ console.log(state.quantity);
       v-model.number="quantity"
     />
     <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">
-      {{ formatMoney }}
+      {{ formatMoney(quantity) }}
     </p>
 
     <h2 class="text-2xl font-extrabold text-gray-600 text-center">
@@ -99,7 +108,7 @@ console.log(state.quantity);
         {{ months }} Months
       </p>
       <p className="text-xl text-gray-600 text-center font-bold">
-        Ammount {{ total }}
+        Total Ammount: {{ formatMoney( totalAmount) }}
       </p>
       <p className="text-xl text-gray-600 text-center font-bold">Month</p>
     </div>
