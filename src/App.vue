@@ -3,9 +3,11 @@
 import { ref, computed, reactive } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
+import { computeTotalPay } from "./helpers/index.js";
 
 const quantity = ref(10000);
-const months = ref(6)
+const months = ref(6);
+const total = ref(computeTotalPay(quantity.value, months.value));
 
 const MIN = 0;
 const MAX = 20000;
@@ -23,23 +25,23 @@ from the imput
       value="10000"
       @input="handleChange"
 */
-const handleChangSub = () =>{
+const handleChangSub = () => {
   const value = quantity.value - STEP;
-  if(value < MIN ){
-    alert('Quantity not valid')
-    return
+  if (value < MIN) {
+    alert("Quantity not valid");
+    return;
   }
   quantity.value = value;
-}
+};
 
-const handleChangAdd = () =>{
+const handleChangAdd = () => {
   const value = quantity.value + STEP;
-  if(value > MAX){
-    alert('Quantity not valid')
-    return
+  if (value > MAX) {
+    alert("Quantity not valid");
+    return;
   }
   quantity.value = value;
-}
+};
 
 const formatMoney = computed(() => {
   const formatter = new Intl.NumberFormat("en-us", {
@@ -58,14 +60,8 @@ console.log(state.quantity);
   <div class="my-20 max-w-lg mx-auto bg-white shadow p-10">
     <Header />
     <div className="flex justify-between mt-10">
-      <Button 
-        :operator="'-'"
-        :fn="handleChangSub"
-      />
-      <Button 
-        :operator="'+'"
-        :fn="handleChangAdd"
-      />
+      <Button :operator="'-'" :fn="handleChangSub" />
+      <Button :operator="'+'" :fn="handleChangAdd" />
     </div>
     <input
       type="range"
@@ -78,37 +74,35 @@ console.log(state.quantity);
     <p class="text-center my-10 text-5xl font-extrabold text-indigo-700">
       {{ formatMoney }}
     </p>
-    
+
     <h2 class="text-2xl font-extrabold text-gray-600 text-center">
       Choose <span className="text-indigo-700">payment term</span>
     </h2>
 
     <select
-    className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold 
-    text-gray-600" 
+      className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold 
+    text-gray-600"
       :value="months"
       v-model.number="months"
     >
-    <option value="6">6 months</option>
-    <option value="12">12 months</option>
-    <option value="24">24 months</option>
-  </select>
+      <option value="6">6 months</option>
+      <option value="12">12 months</option>
+      <option value="24">24 months</option>
+    </select>
 
-  <div class="my-5 space-y-3 bg-gray-50 p-5">
-    <h2 className="text-2xl font-extrabold text-gray-600 text-center">
-      Payment <span className="text-indigo-700">Summary</span>
-    </h2>
+    <div class="my-5 space-y-3 bg-gray-50 p-5">
+      <h2 className="text-2xl font-extrabold text-gray-600 text-center">
+        Payment <span className="text-indigo-700">Summary</span>
+      </h2>
 
-    <p className="text-xl text-gray-600 text-center font-bold">
-      {{months}} Months
-    </p>
-    <p className="text-xl text-gray-600 text-center font-bold">
-      Ammount
-    </p>
-    <p className="text-xl text-gray-600 text-center font-bold">
-      Month
-    </p>
-  </div>
+      <p className="text-xl text-gray-600 text-center font-bold">
+        {{ months }} Months
+      </p>
+      <p className="text-xl text-gray-600 text-center font-bold">
+        Ammount {{ total }}
+      </p>
+      <p className="text-xl text-gray-600 text-center font-bold">Month</p>
+    </div>
   </div>
 </template>
 
