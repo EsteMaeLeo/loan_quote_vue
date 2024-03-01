@@ -1,13 +1,13 @@
 <script setup>
 //v-on:input="handleChange"
-import { ref, computed, reactive } from "vue";
+import { ref, computed, reactive, watch } from "vue";
 import Header from "./components/Header.vue";
 import Button from "./components/Button.vue";
 import { calTotalPay } from "./helpers";
 
 const quantity = ref(10000);
 const months = ref(6);
-const totalAmount = ref( calTotalPay(quantity.value, months.value) );
+const totalAmount = ref(0);
 
 const MIN = 0;
 const MAX = 20000;
@@ -61,6 +61,11 @@ const formatter = new Intl.NumberFormat("en-us", {
   return formatter.format(money);
 };
 
+watch([quantity, months], ()=>{
+  //modify total
+ totalAmount.value= calTotalPay(quantity.value, months.value)
+})
+
 console.log(quantity.value);
 console.log(state.quantity);
 </script>
@@ -99,7 +104,7 @@ console.log(state.quantity);
       <option value="24">24 months</option>
     </select>
 
-    <div class="my-5 space-y-3 bg-gray-50 p-5">
+    <div v-if="totalAmount>0" class="my-5 space-y-3 bg-gray-50 p-5">
       <h2 className="text-2xl font-extrabold text-gray-600 text-center">
         Payment <span className="text-indigo-700">Summary</span>
       </h2>
@@ -112,6 +117,7 @@ console.log(state.quantity);
       </p>
       <p className="text-xl text-gray-600 text-center font-bold">Month</p>
     </div>
+    <p v-else class=" my-4 text-center font-extrabold text-gray-600">Add quantity and time </p>
   </div>
 </template>
 

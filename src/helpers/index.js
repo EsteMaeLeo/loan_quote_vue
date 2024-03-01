@@ -19,7 +19,7 @@ const calTotalPay = (quantity, time) => {
   } else {
     total *= 1.3;
   }  
-  console.log(total)
+
   return total;
 };
 
