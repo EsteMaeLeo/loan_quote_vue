@@ -13,7 +13,6 @@ const MIN = 0;
 const MAX = 20000;
 const STEP = 100;
 
-
 const state = reactive({
   quantity: 0,
 });
@@ -53,7 +52,7 @@ const handleChangAdd = () => {
   return formatter.format(quantity.value);
 }); */
 const formatMoney = (money) => {
-const formatter = new Intl.NumberFormat("en-us", {
+  const formatter = new Intl.NumberFormat("en-us", {
     style: "currency",
     currency: "USD",
   });
@@ -61,10 +60,14 @@ const formatter = new Intl.NumberFormat("en-us", {
   return formatter.format(money);
 };
 
-watch([quantity, months], ()=>{
+watch([quantity, months], () => {
   //modify total
- totalAmount.value= calTotalPay(quantity.value, months.value)
-})
+  totalAmount.value = calTotalPay(quantity.value, months.value);
+});
+
+const monthPay = computed(() => {
+  return (totalAmount.value / months.value);
+});
 
 console.log(quantity.value);
 console.log(state.quantity);
@@ -104,7 +107,7 @@ console.log(state.quantity);
       <option value="24">24 months</option>
     </select>
 
-    <div v-if="totalAmount>0" class="my-5 space-y-3 bg-gray-50 p-5">
+    <div v-if="totalAmount > 0" class="my-5 space-y-3 bg-gray-50 p-5">
       <h2 className="text-2xl font-extrabold text-gray-600 text-center">
         Payment <span className="text-indigo-700">Summary</span>
       </h2>
@@ -113,11 +116,15 @@ console.log(state.quantity);
         {{ months }} Months
       </p>
       <p className="text-xl text-gray-600 text-center font-bold">
-        Total Ammount: {{ formatMoney( totalAmount) }}
+        Total Ammount: {{ formatMoney(totalAmount) }}
       </p>
-      <p className="text-xl text-gray-600 text-center font-bold">Month</p>
+      <p className="text-xl text-gray-600 text-center font-bold">
+        Month payment: {{ formatMoney(monthPay) }}
+      </p>
     </div>
-    <p v-else class=" my-4 text-center font-extrabold text-gray-600">Add quantity and time </p>
+    <p v-else class="my-4 text-center font-extrabold text-gray-600">
+      Add quantity and time
+    </p>
   </div>
 </template>
 
