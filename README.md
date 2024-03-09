@@ -1,7 +1,24 @@
-# Vue 3 + Vite
+# Project Loan Calculator
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-## Recommended IDE Setup
+## Built With
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- Vue 3 + Vite
+- CSS
+- Javascript
+- HTML
+
+## Description:
+
+### Built a Loan Calculator to discover how much you could afford to borrow and what your monthly payments might be.
+
+## Screenshot
+
+![image](https://github.com/EsteMaeLeo/leo_portfolio_dev/assets/89478789/3f59f58f-e44e-4e0b-9b35-3f049c49efba)
+
+## Contribution
+
+Made by Leonel Morales
+
+### ©️2024 Best Loan Calculator
